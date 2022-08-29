@@ -10,22 +10,29 @@ class NewsDescriptionView extends GetView<NewsDescriptionController> {
         body: Obx(()=>
      Container(
       color: Colors.white,
-            child: Column(
-              children: [
-                Image.network(controller.singleEvent.value!.urlToImage),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(controller.singleEvent.value!.title, style: TextStyle(color: Colors.black)),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(controller.singleEvent.value!.author, style: TextStyle(color: Colors.black)),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(controller.singleEvent.value!.description, style: TextStyle(color: Colors.black)),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.network(controller.singleEvent.value!.urlToImage),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(('Tittle: ${controller.singleEvent.value!.title}'), style: TextStyle(color: Colors.black)),
+                  Divider(),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(('Author: ${controller.singleEvent.value!.author}'), style: TextStyle(color: Colors.black)),
+                  Divider(),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(('Description: ${controller.singleEvent.value!.description}'), style: TextStyle(color: Colors.black)),
+                  Divider(),
+                ],
+              ),
             ),
     ),
         ));

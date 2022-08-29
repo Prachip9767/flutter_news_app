@@ -4,8 +4,8 @@ import '../network/service_factory.dart';
 
 class NewsDescriptionController extends GetxController{
   final Rx<Articles?> singleEvent = Rx<Articles?>(null);
-  var isLoading = true.obs;
-  var articles = <Articles>[].obs;
+ final Rx<bool >isLoading = true.obs;
+  final RxList<Articles> articles = <Articles>[].obs;
 
   @override
   void onInit() async {
@@ -15,9 +15,9 @@ class NewsDescriptionController extends GetxController{
   getData() async {
     try {
       isLoading(true);
-      var products = await RemoteServices.fetchDescription();
-      if (products != null) {
-        singleEvent.value = products;
+      var Discription = await RemoteServices.fetchDescription();
+      if (Discription != null) {
+        singleEvent.value = Discription;
       }
     } finally {
       isLoading(false);

@@ -1,14 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter_news_app/data/news_model.dart';
 import 'package:flutter_news_app/network/service_factory.dart';
 import 'package:flutter_news_app/routes_and_pages/routs_pages.dart';
 import 'package:get/get.dart';
 
 class NewsHomeController extends GetxController {
-
-  var isLoading = true.obs;
-  var articles = <Articles>[].obs;
+  final RxList<Articles> articles = <Articles>[].obs;
+  final Rx<bool> isLoading = true.obs;
 
   @override
   void onInit() async {
@@ -27,7 +24,6 @@ getData() async {
 }
 onTap(int index){
     Articles articless=articles[index];
-  // QuizEventModel quizEventModel = upcomingEvents[listIndex];
   Get.toNamed(NewsRoutesPaths.newsDescription, arguments: articless);
 }
 }

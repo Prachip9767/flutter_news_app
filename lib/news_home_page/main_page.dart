@@ -69,7 +69,7 @@ class NewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         child: Column(
           children: [
@@ -86,7 +86,7 @@ class NewsList extends StatelessWidget {
                     height: 48,
                     errorWidget: (context, str, dyn) => Text('url not founs')),
                 SizedBox(
-                  width: 30,
+                  width: 10,
                 ),
                 Flexible(
                   child: Column(
@@ -103,8 +103,9 @@ class NewsList extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 10,
+              height: 4,
             ),
+            Divider()
           ],
         ),
       ),
