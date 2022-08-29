@@ -1,10 +1,10 @@
-# flutter_news_app
+# Assignment_Sunstone✨
+WallCraft is a App where you can set different wallpaper in you mobile.
 
-A new Flutter project.
+![News App](https://user-images.githubusercontent.com/86509987/187124513-440e3300-f04e-4c96-940c-c7e86975a92e.png)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+# Teck-stack✨
+* Dart
 
 A few resources to get you started if this is your first Flutter project:
 
