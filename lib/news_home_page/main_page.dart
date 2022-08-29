@@ -11,17 +11,6 @@ class HomePage extends GetView<NewsHomeController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back_ios,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-            ),
-            onPressed: () {},
-          )
-        ],
       ),
       body: Column(
         children: [
@@ -52,10 +41,15 @@ class HomePage extends GetView<NewsHomeController> {
                 return ListView.builder(
                   itemCount: controller.articles.length,
                   itemBuilder: (context, index) {
-                    return NewsList(
-                        image: controller.articles[index].urlToImage,
-                        title: controller.articles[index].title,
-                        author: controller.articles[index].author);
+                    return GestureDetector(
+                      onTap: (){
+                        controller.onTap(index);
+                      },
+                      child: NewsList(
+                          image: controller.articles[index].urlToImage,
+                          title: controller.articles[index].title,
+                          author: controller.articles[index].author),
+                    );
                   },
                 );
             }),

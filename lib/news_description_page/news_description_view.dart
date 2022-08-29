@@ -7,25 +7,27 @@ class NewsDescriptionView extends GetView<NewsDescriptionController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(title: Text('News Description')) ,
-        body: Container(
+        body: Obx(()=>
+     Container(
       color: Colors.white,
-          child: Column(
-            children: [
-              Image.network('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'),
-              SizedBox(
-                height: 4,
-              ),
-              Text('tittle', style: TextStyle(color: Colors.black)),
-              SizedBox(
-                height: 4,
-              ),
-              Text('author', style: TextStyle(color: Colors.black)),
-              SizedBox(
-                height: 4,
-              ),
-              Text('Description', style: TextStyle(color: Colors.black)),
-            ],
-          ),
-    ));
+            child: Column(
+              children: [
+                Image.network(controller.singleEvent.value!.urlToImage),
+                SizedBox(
+                  height: 4,
+                ),
+                Text(controller.singleEvent.value!.title, style: TextStyle(color: Colors.black)),
+                SizedBox(
+                  height: 4,
+                ),
+                Text(controller.singleEvent.value!.author, style: TextStyle(color: Colors.black)),
+                SizedBox(
+                  height: 4,
+                ),
+                Text(controller.singleEvent.value!.description, style: TextStyle(color: Colors.black)),
+              ],
+            ),
+    ),
+        ));
   }
 }

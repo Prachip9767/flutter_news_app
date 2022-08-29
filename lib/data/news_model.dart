@@ -4,6 +4,10 @@ List<Articles> articlesFromJson(String str) => List<Articles>.from(json.decode(s
 
 String articlesToJson(List<Articles> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+Articles articlessFromJson(String str) => Articles.fromJson(json.decode(str));
+
+String articlessToJson(Articles data) => json.encode(data.toJson());
+
 class Articles {
   Articles({
     required this.author,
