@@ -1,5 +1,5 @@
-# Assignment_Sunstone✨
-WallCraft is a App where you can set different wallpaper in you mobile.
+# News App ✨
+News app read latest news and stay updated
 
 ![News App](https://user-images.githubusercontent.com/86509987/187124513-440e3300-f04e-4c96-940c-c7e86975a92e.png)
 
