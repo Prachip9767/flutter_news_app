@@ -1,32 +1,31 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_news_app/data/news_model.dart';
 import 'package:flutter_news_app/network/service_factory.dart';
-import 'package:flutter_news_app/routes_and_pages/routs_pages.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class NewsHomeController extends GetxController {
-  final RxList<Articles> articles = <Articles>[].obs;
-  final Rx<bool> isLoading = true.obs;
+import '../routes_and_pages/routs_pages.dart';
 
-  @override
-  void onInit() async {
-    getData();
-  }
-getData() async {
-  try {
-    isLoading(true);
-    var newsList = await RemoteServices.fetchNewsList();
-    if (newsList != null) {
-      articles.value = newsList;
+class NewsController extends ChangeNotifier {
+  List<Articles> articles = [];
+  bool isLoading = true;
+
+  Future<void> getData() async {
+    try {
+      isLoading = true;
+      notifyListeners();
+
+      var newsList = await RemoteServices.fetchNewsList();
+      if (newsList != null) {
+        articles = newsList;
+      }
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
-  } finally {
-    isLoading(false);
+  }
+  onTap(int index){
+    Articles articless=articles[index];
+    Get.toNamed(NewsRoutesPaths.newsDescription, arguments: articless);
   }
 }
-onTap(int index){
-    Articles articless=articles[index];
-  Get.toNamed(NewsRoutesPaths.newsDescription, arguments: articless);
-}
-}
-
-
-

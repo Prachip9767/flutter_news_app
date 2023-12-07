@@ -1,26 +1,26 @@
-import 'package:get/get.dart';
-import '../data/news_model.dart';
-import '../network/service_factory.dart';
+import 'package:flutter_news_app/data/news_model.dart';
+import 'package:flutter_news_app/network/service_factory.dart';
+import 'package:flutter/foundation.dart';
 
-class NewsDescriptionController extends GetxController{
-  final Rx<Articles?> singleEvent = Rx<Articles?>(null);
- final Rx<bool >isLoading = true.obs;
-  final RxList<Articles> articles = <Articles>[].obs;
+class NewsDescriptionController extends ChangeNotifier {
+  Articles? _singleEvent;
+  Articles? get singleEvent => _singleEvent;
 
-  @override
-  void onInit() async {
-    singleEvent.value = Get.arguments as Articles;
-    getData();
-  }
-  getData() async {
+  bool _isLoading = true;
+  bool get isLoading => _isLoading;
+
+  Future<void> getData() async {
     try {
-      isLoading(true);
-      var Discription = await RemoteServices.fetchDescription();
-      if (Discription != null) {
-        singleEvent.value = Discription;
+      _isLoading = true;
+      notifyListeners();
+
+      var description = await RemoteServices.fetchDescription();
+      if (description != null) {
+        _singleEvent = description;
       }
     } finally {
-      isLoading(false);
+      _isLoading = false;
+      notifyListeners();
     }
   }
 }
